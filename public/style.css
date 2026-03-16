@@ -1,0 +1,179 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+}
+
+main {
+    margin-top: 1em;
+    padding: 0 1em 0 1em;
+}
+
+li {
+    list-style: none;
+}
+
+header {
+    display: flex;
+    height: 100px;
+    width: auto;
+    justify-content: center;
+    align-content: center;
+}
+
+.mobileHeader {
+    place-content: start space-evenly;
+}
+
+section {
+    p {
+        width: 30ch;
+    }
+}
+
+/* de filter in de header */
+.filterButton {
+    padding: 0.3em;
+    background: var(--background-color-2);
+    border-radius: 0.3em;
+}
+
+.filterHeader {
+    width: 100vw;
+    height: fit-content;
+    top: 100px;
+    gap: 1em;
+    top: 4em;
+    place-content: center;
+    position: absolute;
+    display: flex;
+}
+
+/* einde filterheader */
+
+
+/* footer met nav */
+section.nav {
+    position: sticky;
+    bottom: 0;
+    place-content: center;
+    width: 100vw;
+    height: 100px;
+    bottom: 0;
+    background: var(--background-color-2);
+
+    @media (min-width: 800px) {
+        /* top: 0; */
+    }
+}
+
+ul.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1em;
+}
+
+
+li.nav {
+    font-size: var(--font-size-s);
+    font-weight: 600;
+}
+
+/* einde headernav */
+
+section.collectionInfoHome {
+    background: var(--background-color-4);
+    margin: 1em;
+    padding: 1em;
+    color: var(--text-color-1);
+    border-radius: var(--border-radius-1);
+}
+
+/* tag van de article preview */
+.tag {
+    align-self: flex-start;
+    font-size: var(--font-size-xs);
+    background: var(--background-color-5);
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+section.articleList {
+    display: flex;
+    flex-direction: column;
+}
+
+/* basis stijling van de article previews */
+section.articlePreview {  
+    background: var(--background-color-2);
+    border-radius: var(--border-radius-1);
+    padding: 1em;
+
+    h4 {
+        padding-bottom: 1em;
+    }
+}
+
+/* preview lijst van artikelen op de homepagina */
+section.articlePreview.home {
+    margin: 0 0.25em 0 1em;
+
+    img {
+        width: 300px;
+        height: auto;
+    }
+}
+
+/* preview lijst van artikelen op de nieuwspagina */
+section.articlePreview.nieuws {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: transparent;
+    border-top: solid;
+    border-radius: 0;
+
+    h4 {
+        padding-bottom: 0;
+    }
+
+    img {
+        width: 150px;
+        
+    }
+}
+
+/* homepage nieuwsberichten */
+section.articleCollection {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+/* detailpagina nieuwsbericht */
+article.artikel {
+    border-radius: var(--border-radius-1);
+    padding: 1em;
+
+        img {
+            width: 100%;
+        }
+
+        p {
+            font-size: var(--font-size-m);
+        }
+}
+
+.error-img {
+    width: 80vw;
+    justify-content: center;
+}
+
+/* statische knop op zelfde plek altijd. nog stijlen */
+.terugKnop {
+    right: 1em;
+}
