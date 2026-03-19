@@ -3,13 +3,15 @@
     margin: 0;
 }
 
-body {
-    height: 100vh;
-}
+/* body {
+    
+} */
 
 main {
     margin-top: 1em;
-    padding: 0 1em 0 1em;
+    height: 100vh;
+    padding-bottom: 5em;
+    /* width: 100vw; */
 }
 
 li {
@@ -57,12 +59,11 @@ section {
 
 /* footer met nav */
 section.nav {
-    position: sticky;
+    position: fixed;
     bottom: 0;
     place-content: center;
     width: 100vw;
     height: 100px;
-    bottom: 0;
     background: var(--background-color-2);
 
     @media (min-width: 800px) {
@@ -96,7 +97,7 @@ section.collectionInfoHome {
 /* tag van de article preview */
 .tag {
     align-self: flex-start;
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-xxs);
     background: var(--background-color-5);
     padding: 4px 10px;
     border-radius: 20px;
@@ -108,33 +109,50 @@ section.articleList {
 }
 
 /* basis stijling van de article previews */
-section.articlePreview {  
-    background: var(--background-color-2);
-    border-radius: var(--border-radius-1);
+
+.collectionArticles-home {
     padding: 1em;
+}
+
+article.articlePreview-home {
+
+    background: var(--background-color-2);
+    color: var(--text-color-2);
+    padding: 1em;
+    border-radius: 1em;
+    width: 250px;
 
     h4 {
         padding-bottom: 1em;
+        font-size: var(--font-size-s);
+        text-wrap: nowrap;
+    }
+
+    img {
+        width: 250px;
+        height: 180px;
+        object-fit: cover;
     }
 }
 
 /* preview lijst van artikelen op de homepagina */
-section.articlePreview.home {
-    margin: 0 0.25em 0 1em;
+section.articlePreview-home {
 
-    img {
-        width: 300px;
-        height: auto;
-    }
+    display: flex;
+    gap: 1em;
+    overflow-x: scroll;
 }
 
+/* NOG EDITEN */
+
 /* preview lijst van artikelen op de nieuwspagina */
-section.articlePreview.nieuws {
+section.articlePreview-nieuws {
     display: grid;
     grid-template-columns: 1fr 1fr;
     background: transparent;
     border-top: solid;
     border-radius: 0;
+    padding: 1em;
 
     h4 {
         padding-bottom: 0;
@@ -142,9 +160,11 @@ section.articlePreview.nieuws {
 
     img {
         width: 150px;
-        
+
     }
 }
+
+/* EINDE NOG EDITEN */
 
 /* homepage nieuwsberichten */
 section.articleCollection {
@@ -159,13 +179,13 @@ article.artikel {
     border-radius: var(--border-radius-1);
     padding: 1em;
 
-        img {
-            width: 100%;
-        }
+    img {
+        width: 100%;
+    }
 
-        p {
-            font-size: var(--font-size-m);
-        }
+    p {
+        font-size: var(--font-size-m);
+    }
 }
 
 .error-img {

@@ -9,7 +9,6 @@ import { Liquid } from 'liquidjs';
 console.log('Hieronder moet je waarschijnlijk nog wat veranderen (wat wordt hiermee bedoelt?)')
 // Doe een fetch naar de data die je nodig hebt
 // const apiResponse = await fetch('...')
-
 // Lees van de response van die fetch het JSON object in, waar we iets mee kunnen doen
 // const apiResponseJSON = await apiResponse.json()
 
@@ -36,12 +35,18 @@ app.engine('liquid', engine.express());
 // Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
 app.set('views', './views')
 
-// Maak een GET route voor de index (meestal doe je dit in de root, als /)
 app.get('/', async function (request, response) {
-   // Render index.liquid uit de Views map
-   // Geef hier eventueel data aan mee
-   response.render('index.liquid')
+
+  // Haal alle personen uit de WHOIS API op, van dit jaar, gesorteerd op id
+
+  const artikelResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news')
+
+  // En haal daarvan de JSON op
+  const artikelResponseJSON = await artikelResponse.json()
+    response.render('index.liquid', {news: artikelResponseJSON.data})
 })
+
+
 
 app.get('/nieuws', async function (request, response) {
    // Render index.liquid uit de Views map
@@ -67,8 +72,6 @@ app.get('/collectie', async function (request, response) {
    response.render('collectie.liquid')
 })
 
-
-
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
 app.post('/', async function (request, response) {
@@ -76,6 +79,10 @@ app.post('/', async function (request, response) {
   // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
   response.redirect(303, '/')
 })
+
+app.use((request, response) => {
+  response.render("404.liquid");
+});
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
 // Lokaal is dit poort 8000, als dit ergens gehost wordt, is het waarschijnlijk poort 80
@@ -86,7 +93,3 @@ app.listen(app.get('port'), function () {
   // Toon een bericht in de console en geef het poortnummer door
   console.log(`Application started on http://localhost:${app.get('port')}`)
 })
-
-app.use((request, response) => {
-  response.render("404.liquid");
-});
