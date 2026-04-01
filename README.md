@@ -37,10 +37,14 @@ De technieken die ik heb gebruikt:
 * progressive enhancement
 * een POST
 * ik heb truncate gebruikt in de nieuwsberichten previews. (truncate is als je een text wil afkappen met 3 puntjes aan het einde).
-* 
 
 ## Installatie
 <!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
+1. Clone als eerst deze repository
+2. Open hem in VSCodium of een code editor
+3. Open dan de terminal en type npm install
+4. Start vervolgens de website door npm start in te typen
+ 
 
 ## Bronnen
 
