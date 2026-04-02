@@ -21,7 +21,7 @@ console.log('Hieronder moet je waarschijnlijk nog wat veranderen (wat wordt hier
 const app = express()
 
 // Maak werken met data uit formulieren iets prettiger
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 
 // Gebruik de map 'public' voor statische bestanden (resources zoals CSS, JavaScript, afbeeldingen en fonts)
 // Bestanden in deze map kunnen dus door de browser gebruikt worden
@@ -29,12 +29,14 @@ app.use(express.static('public'))
 
 // Stel Liquid in als 'view engine'
 const engine = new Liquid();
-app.engine('liquid', engine.express()); 
+app.engine('liquid', engine.express());
 
 // Stel de map met Liquid templates in
 // Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
 app.set('views', './views')
 
+
+// load de home
 app.get('/', async function (request, response) {
 
 // Haal alle nieuwsartikelen uit de directus API op
@@ -46,12 +48,15 @@ app.get('/', async function (request, response) {
 })
 
 
+// laad de data in de artikel page
+app.get('/artikel', async function (request, response) {
 
-  const artikelResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news')
+// Haal alle nieuwsartikelen uit de directus API op
+   const artikelResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news')
 
-  // En haal daarvan de JSON op
-  const artikelResponseJSON = await artikelResponse.json()
-    response.render('index.liquid', {news: artikelResponseJSON.data})
+   // En haal daarvan de JSON op
+   const artikelResponseJSON = await artikelResponse.json()
+   response.render('artikel.liquid', { news: artikelResponseJSON.data })  
 })
 //////////////////
 
@@ -94,7 +99,7 @@ app.get('/suggesties', async function (request, response) {
 app.get('/jouw-suggestie', async function (request, response) {
    // Render jouw-suggestie.liquid uit de Views map
    // Geef hier eventueel data aan mee
-   response.render('artikeldetailpage.liquid')
+   response.render('jouw-suggestie.liquid')
 })
 
 /////////////////////////////////////////////////

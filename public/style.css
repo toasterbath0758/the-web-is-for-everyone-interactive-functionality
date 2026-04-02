@@ -3,15 +3,13 @@
     margin: 0;
 }
 
-/* body {
-    
-} */
-
 main {
     margin-top: 1em;
-    height: 100vh;
-    padding-bottom: 5em;
-    /* width: 100vw; */
+    margin-bottom: 7em;
+    height: fit-content;
+
+    padding-right: 1em;
+    padding-left: 1em;
 }
 
 li {
@@ -113,6 +111,7 @@ li.nav {
 
 /* einde headernav */
 
+/* bloemenveld collectie gedeelte */
 section.collectionInfoHome {
     background: var(--background-color-4);
     margin: 1em;
@@ -120,6 +119,8 @@ section.collectionInfoHome {
     color: var(--text-color-1);
     border-radius: var(--border-radius-1);
 }
+
+/* ////////////////////// */
 
 /* tag van de article preview */
 .tag {
@@ -130,19 +131,19 @@ section.collectionInfoHome {
     border-radius: 20px;
 }
 
-section.articleList {
+
+/* basis stijling van de article previews */
+.articleList {
     display: flex;
     flex-direction: column;
 }
 
-/* basis stijling van de article previews */
-
 .collectionArticles-home {
-    padding: 1em;
+    padding: 1em 0 1em 1em;
 }
 
+/* nesting is widely available */
 article.articlePreview-home {
-
     background: var(--background-color-2);
     color: var(--text-color-2);
     padding: 1em;
@@ -162,44 +163,35 @@ article.articlePreview-home {
     }
 }
 
-/* preview lijst van artikelen op de homepagina */
+/* preview van artikel op de homepagina */
 section.articlePreview-home {
-
     display: flex;
     gap: 1em;
     overflow-x: scroll;
 }
 
-/* NOG EDITEN */
-
-/* preview lijst van artikelen op de nieuwspagina */
-section.articlePreview-nieuws {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+/* preview van artikel op de nieuwspagina */
+article.articlePreview-nieuws {
+    display: flex;
     background: transparent;
     border-top: solid;
     border-radius: 0;
     padding: 1em;
+    gap: 1em;
 
     h4 {
         padding-bottom: 0;
+        font-size: var(--font-size-s);
     }
 
     img {
-        width: 150px;
-
+        object-fit: cover;
+        height: 50px;
+        place-self: center;
     }
 }
 
-/* EINDE NOG EDITEN */
 
-/* homepage nieuwsberichten */
-section.articleCollection {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: scroll;
-    scrollbar-width: none;
-}
 
 /* detailpagina nieuwsbericht */
 article.artikel {
@@ -207,22 +199,25 @@ article.artikel {
     padding: 1em;
 
     img {
+        object-fit: cover;
         width: 100%;
     }
 
+    h1 {
+        font-size: var(--font-size-l);
+        padding-bottom: 0.5em;
+    }
+ 
     p {
-        font-size: var(--font-size-m);
+        font-size: var(--font-size-s);
     }
 }
 
 .error-img {
     width: 80vw;
-    justify-content: center;
+    justify-self: center;
 }
 
-/* statische knop op zelfde plek altijd. nog stijlen */
-.terugKnop {
-    right: 1em;
 
 .suggestie {
     display: flex;
