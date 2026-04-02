@@ -37,7 +37,15 @@ app.set('views', './views')
 
 app.get('/', async function (request, response) {
 
-  // Haal alle personen uit de WHOIS API op, van dit jaar, gesorteerd op id
+// Haal alle nieuwsartikelen uit de directus API op
+   const artikelResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news')
+
+   // En haal daarvan de JSON op
+   const artikelResponseJSON = await artikelResponse.json()
+   response.render('index.liquid', { news: artikelResponseJSON.data })  
+})
+
+
 
   const artikelResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news')
 
@@ -45,13 +53,19 @@ app.get('/', async function (request, response) {
   const artikelResponseJSON = await artikelResponse.json()
     response.render('index.liquid', {news: artikelResponseJSON.data})
 })
+//////////////////
 
 
 
+// load de nieuws
 app.get('/nieuws', async function (request, response) {
-   // Render index.liquid uit de Views map
-   // Geef hier eventueel data aan mee
-   response.render('nieuws.liquid')
+
+   // Haal alle nieuwsartikelen uit de directus API op
+   const artikelResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news')
+
+   // En haal daarvan de JSON op
+   const artikelResponseJSON = await artikelResponse.json()
+   response.render('nieuws.liquid', { news: artikelResponseJSON.data })  
 })
 
 app.get('/nieuws/:slug', async function (request, response) {
