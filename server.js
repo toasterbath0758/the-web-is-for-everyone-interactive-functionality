@@ -67,9 +67,19 @@ app.get('/nieuws', async function (request, response) {
    const artikelResponseJSON = await artikelResponse.json()
    response.render('nieuws.liquid', { news: artikelResponseJSON.data })  
 })
+//////////////////
+// maak een nieuws slug
+app.get('/artikel/:slug', async function (request, response) {
 
-app.get('/nieuws/:slug', async function (request, response) {
-   // Render index.liquid uit de Views map
+   // Haal alle nieuwsartikelen uit de directus API op
+   const artikelResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news?filter[slug]='+ request.params.slug)
+
+   // En haal daarvan de JSON op
+   const artikelResponseJSON = await artikelResponse.json()
+   response.render('artikel.liquid', { news: artikelResponseJSON.data[0] })  
+})
+  
+/////////////////////////////////
    // Geef hier eventueel data aan mee
    response.render('artikeldetailpage.liquid')
 })
