@@ -12,18 +12,22 @@
 <main>
 
 <section class="articleList">
-  <section class="articlePreview-nieuws">
-    <article>
-      <img src="https://fdnd-agency.directus.app/assets/{{ news.image }}" height="" alt="placeholder plant">    
-    </article>
-      <h4>
-        na de bloei van de duizendblad
-      </h4>
-  </section>
+  
+    {% for news in news %}
+      
+      <article class="articlePreview-nieuws">
+       <a href="/artikel/{{ news.slug }}">
+
+        <img src="https://fdnd-agency.directus.app/assets/{{ news.image }}" height="50" width="75" alt="plant">
+        <h4>{{ news.title | truncate: 25 }}</h4>
+      </article>
+      </a>
+      
+    {% endfor %}
+
 </section>
-
+  
 </main>
-
 <section class="nav">
   <ul class="nav">
     <li class="nav"><a href="/">home</li>
@@ -32,5 +36,7 @@
     <li class="nav"><a href="/collectie">collectie</a></li>
   </ul>
 </section>
+
+
 
 {% render 'partials/foot.liquid' %}
