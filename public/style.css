@@ -196,4 +196,46 @@ article.artikel {
 /* statische knop op zelfde plek altijd. nog stijlen */
 .terugKnop {
     right: 1em;
+
+.suggestie {
+    display: flex;
+    flex-direction: row;
+
+
+    padding: 1em;
+    border-radius: 1em;
+    margin: 1em;
+
+    background: var(--background-color-2);
+
+    .votes {
+        width: 1em;
+    }
+}
+
+/* sectionclass van de jouw-suggestie page */
+form.form {
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    justify-self: center;
+    gap: 0.5em;
+
+    input {
+        width: 250px;
+        padding: 0.5em;
+        border: solid black;
+        border-radius: 5em;
+        border-style: default;
+        align-self: center;
+    }
+
+    label {
+        align-self: start center;
+    }
+
+    input.button {
+        width: 100px;
+        justify-self: end center;
+    }
 }

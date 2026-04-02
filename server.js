@@ -80,9 +80,56 @@ app.get('/artikel/:slug', async function (request, response) {
 })
   
 /////////////////////////////////
+
+app.get('/suggesties', async function (request, response) {
+// Haal alle suggestions uit de database op
+   const suggestionResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_suggestions')
+
+   // En haal daarvan de JSON op
+   const suggestionResponseJSON = await suggestionResponse.json()
+   // stuur de data mee naar liquid (de html, CSS files hier)
+   response.render('suggesties.liquid', { suggestions: suggestionResponseJSON.data })  
+})
+
+app.get('/jouw-suggestie', async function (request, response) {
+   // Render jouw-suggestie.liquid uit de Views map
    // Geef hier eventueel data aan mee
    response.render('artikeldetailpage.liquid')
 })
+
+/////////////////////////////////////////////////
+// POST GEDEELTE
+
+app.post('/jouw-suggestie', async (request, response) => {
+
+   console.log(request)
+  // Stuur een POST request naar de messages tabel
+  // Een POST request bevat ook extra parameters, naast een URL
+  const postResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_suggestions', {
+
+    // Overschrijf de standaard GET method, want ook hier gaan we iets veranderen op de server
+    method: 'POST',        
+    // Geef de body mee als JSON string
+    body: JSON.stringify({
+      // de variabelen uit de database 
+      suggestion: request.body.suggestion,
+      suggestion_reason: request.body.suggestion_reason
+    }),
+   headers: {
+      'Content-Type': 'application/json',
+   }
+
+    // En vergeet deze HTTP headers niet: hiermee vertellen we de server dat we JSON doorsturen
+    // (In realistischere projecten zou je hier ook authentication headers of een sleutel meegeven)
+  });
+
+  // Stuur de browser daarna weer naar de homepage
+  response.redirect(303, '/suggesties')
+})
+
+
+// EINDE POST GEDEELTE
+///////////////////////////////////////////////
 
 app.get('/veldverkenner', async function (request, response) {
    // Render index.liquid uit de Views map
@@ -99,13 +146,13 @@ app.get('/collectie', async function (request, response) {
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
 app.post('/', async function (request, response) {
-  // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
-  // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
-  response.redirect(303, '/')
+   // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
+   // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
+   response.redirect(303, '/')
 })
 
 app.use((request, response) => {
-  response.render("404.liquid");
+   response.render("404.liquid");
 });
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
@@ -114,6 +161,6 @@ app.set('port', process.env.PORT || 8000)
 
 // Start Express op, haal daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
-  // Toon een bericht in de console en geef het poortnummer door
-  console.log(`Application started on http://localhost:${app.get('port')}`)
+   // Toon een bericht in de console en geef het poortnummer door
+   console.log(`Application started on http://localhost:${app.get('port')}`)
 })
