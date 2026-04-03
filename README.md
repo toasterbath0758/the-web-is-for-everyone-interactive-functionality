@@ -28,7 +28,7 @@ hier kan je een suggestie achterlaten, je voert in wat je favoriete plant is en 
 <!--Bij Gebruik staat hoe je project er uit ziet, hoe het werkt en wat je er mee kan. -->
 Op de app kan je: 
 * de artikelen lezen op de bloemennieuws pagina.
-* een suggestie achterlaten over wat voor plant je in de tuin zou willen zien.
+* een suggestie achterlaten over wat voor plant je in de tuin zou willen zien. (dit werkt door de POST route in de server.js!)
 * naar de kaart om de bloemenopdrachten te maken, hierna unlock je de planten in je collectie en kan je meer informatie vinden per bloem.
 
 ## Kenmerken
