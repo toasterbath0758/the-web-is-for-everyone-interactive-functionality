@@ -12,8 +12,7 @@ main {
     padding-left: 1em;
 }
 
-/* darkmode */
-@media screen and (prefers-color-scheme: dark){ 
+/* darkmode */@media screen and (prefers-color-scheme: dark){ 
     body { 
         background-color: black; 
         color: white;
@@ -33,6 +32,7 @@ main {
         color: white;
     }
  }
+
 /* eind darkmode */
 
 
