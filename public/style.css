@@ -31,6 +31,12 @@ main {
     h4 {
         color: white;
     }
+
+    article.suggestie {
+        h4 {
+            color: black;
+        }
+    }
  }
 
 /* eind darkmode */
