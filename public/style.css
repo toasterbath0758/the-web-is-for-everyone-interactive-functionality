@@ -12,6 +12,30 @@ main {
     padding-left: 1em;
 }
 
+/* darkmode */
+@media screen and (prefers-color-scheme: dark){ 
+    body { 
+        background-color: black; 
+        color: white;
+    }
+
+    article.articlePreview-home {
+        h4{
+        color: black;
+        }
+    }
+
+    section.collectionInfoHome {
+        color: black;
+    }
+
+    h4 {
+        color: white;
+    }
+ }
+/* eind darkmode */
+
+
 li {
     list-style: none;
 }
@@ -116,7 +140,6 @@ section.collectionInfoHome {
     background: var(--background-color-4);
     margin: 1em;
     padding: 1em;
-    color: var(--text-color-1);
     border-radius: var(--border-radius-1);
 }
 
